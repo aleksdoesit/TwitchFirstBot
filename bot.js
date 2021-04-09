@@ -22,29 +22,34 @@ onMessageHandler = (target, context, msg, self) => {
   if (self) { return; }
   
   const commandName = msg.trim();
-  
-  if (commandName === '!dice') {
-    
-    const num = rollDice();
-    
-    client.say(target, `You rolled a ${num}`);
-    
-    console.log(`* Executed ${commandName} command`);
-    
-  } else if (commandName === '!d20') {
 
-    const num = rollD20();
+  switch (commandName) {
 
-    client.say(target, `You rolled a ${num}`);
+    case '!dice':
 
-    console.log(`* Executed ${commandName} command`);
+      const num = rollDice();
+      client.say(target, `You rolled a ${num}`);
+      console.log(`* Executed ${commandName} command`);
 
-  } else {
+      break;
     
-    console.log(`* Unknown command ${commandName}`)
-    
+    case '!d20':
+
+      const num20 = rollD20();
+      client.say(target, `You rolled a ${num20}`);
+      console.log(`* Executed ${commandName} command`);
+
+      break;
+
+    case '!about':
+
+      const portfolioUrl = 'https://imaleks.dev/';
+      client.say(target, `Bot designed by ${portfolioUrl}`)
+      console.log(`* Executed ${commandName} command`)
+
+      break;
+
   }
-  
 }
 
 rollDice = () => {
@@ -61,6 +66,15 @@ rollD20 = () => {
 
 }
 
+intervalMessages = (target, context, msg, self) => {
+
+  setInterval(() => {
+    client.say('AleksDoesIt', `If you're enjoying the stream please consider following :)`)
+    console.log(`* Executed Interval Message`)
+  }, 15000);
+
+}
+
 onConnectedHandler = (addr, port) => {
   
   console.log(`* Connected to ${addr}:${port}`)
@@ -71,5 +85,6 @@ const client = new tmi.client(opts);
 
 client.on('message', onMessageHandler);
 client.on('connected', onConnectedHandler);
+client.on('connected', intervalMessages)
 
 client.connect();
