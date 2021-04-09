@@ -68,10 +68,16 @@ rollD20 = () => {
 
 intervalMessages = (target, context, msg, self) => {
 
+  const socialUrl = 'https://twitter.com/ItsAleksNikolic || https://www.instagram.com/casadialeks/'
+  setInterval(() => {
+    client.say('AleksDoesIt', `Let's connect! ${socialUrl}`)
+    console.log(`* Executed Interval Message`)
+  }, 28000);
+
   setInterval(() => {
     client.say('AleksDoesIt', `If you're enjoying the stream please consider following :)`)
     console.log(`* Executed Interval Message`)
-  }, 15000);
+  }, 20000);
 
 }
 
