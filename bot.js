@@ -49,6 +49,14 @@ onMessageHandler = (target, context, msg, self) => {
 
       break;
 
+    case '!warrior':
+
+      const logsUrl = 'https://tinyurl.com/CappuccinoEF';
+      client.say(target, `Cappuccino ${logsUrl}`)
+      console.log(`* Executed ${commandName} command`)
+
+      break;
+
   }
 }
 
