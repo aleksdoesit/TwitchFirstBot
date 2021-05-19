@@ -89,7 +89,7 @@ intervalMessages = (target, context, msg, self) => {
     generateMessage = intervalMessages[Math.floor(Math.random() * intervalMessages.length)]
     client.say('AleksDoesIt', generateMessage)
     console.log(`* Executed Interval Message`)
-  }, 900000);
+  }, 950000);
 
 }
 
